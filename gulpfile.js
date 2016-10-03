@@ -8,7 +8,6 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     imagemin = require('gulp-imagemin'),
     pngcrush = require('imagemin-pngcrush'),
-    livereload = require('gulp-livereload'),
     watch = require('gulp-watch'),
     connect = require('gulp-connect');
 
@@ -22,16 +21,16 @@ var gulp = require('gulp'),
   */
 gulp.task('livereload', function() {
 
-    //TODO: optimizar para que recargue solo al modificar archivos
-    //especificos
-
-    gulp.src(['./**/*.*'])
-        .pipe(watch(['./**/*.*']))
+    //gulp.src(['./**/*.*'])
+        //.pipe(watch(['./**/*.*']))
+        //.pipe(connect.reload());
+    gulp.src(['static/css/*.css','static/js/**/*.js','templates/**/*.html','index.html'])
+        .pipe(watch(['static/css/*.css','static/js/**/*.js','templates/**/*.html','index.html']))
         .pipe(connect.reload());
 });
 
 /*
-    tarea para iniciar minimizacion
+    tarea para minimizacion y concatenacion de javascript
 */
 gulp.task('compress', function() {
     gulp.src('static/js/*.js')
