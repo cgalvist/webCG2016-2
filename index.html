@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
         <link rel="stylesheet" href="node_modules/angular-material/angular-material.css">
         <script src="node_modules/angular/angular.js"></script>
+        <script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
         <script src="node_modules/angular-aria/angular-aria.js"></script>
         <script src="node_modules/angular-animate/angular-animate.js"></script>
         <script src="node_modules/angular-material/angular-material.js"></script>
@@ -15,49 +16,7 @@
 
     </head>
     <body>
-        <div ng-controller="toolbarCtrl" layout="column" style="height:100%;" ng-cloak>
-            <section layout="row" flex>
-                <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="4">
-                    <md-toolbar class="md-theme-indigo">
-                        <h1 class="md-toolbar-tools">Sidenav Left</h1>
-                    </md-toolbar>
-                    <md-content layout-padding ng-controller="LeftCtrl">
-                        <md-button ng-click="close()" class="md-primary" hide-gt-md>
-                        Close Sidenav Left
-                        </md-button>
-                        <p hide show-gt-md>
-                        This sidenav is locked open on your device. To go back to the default behavior,
-                        narrow your display.
-                        </p>
-                    </md-content>
-                </md-sidenav>
-
-                <md-toolbar class="md-hue-2">
-                    <div class="md-toolbar-tools">
-                        <md-button class="md-icon-button" aria-label="Settings" ng-click="toggleLeft()" hide-gt-sm="$mdMedia('gt-md')">
-                            <md-icon md-svg-icon="dist/img/icons/menu.svg"></md-icon>
-                        </md-button>
-                        <h2><span>Bienvenido</span></h2>
-                        <span flex></span>
-                        <md-button class="md-icon-button" aria-label="More">
-                            <md-icon md-svg-icon="dist/img/icons/more_vert.svg"></md-icon>
-                        </md-button>
-                    </div>
-                    <div style="height: 100%;">
-                        <md-content flex layout-padding style="height: 100%;">
-                            <div layout="column" layout-align="top center">
-                                <ul>
-                                    <li ng-repeat="user in users">
-                                    <p>Id: {{user.id}}, Nombre: {{user.nombre}}</p>
-                                    </li>
-                                </ul>
-                            <md-button>Texto</md-button>
-                            </div>
-                        </md-content>
-                    </div>
-                </md-toolbar>
-            </section>
-        </div>
-
+        <!-- Aquí inyectamos las vistas -->
+        <div ui-view></div>
     </body>
 </html>

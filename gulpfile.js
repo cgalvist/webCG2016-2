@@ -42,7 +42,9 @@ gulp.task('watchBuildFiles', function () {
 gulp.task('compress', function() {
     gulp.src('static/js/**/*.js')
         .pipe(concat('app.min.js'))
-        .pipe(uglify({mangle: false}))
+        .pipe(uglify({mangle: false}).on('error', function(e){
+            console.log(e);
+         }))
         .pipe(gulp.dest('dist/js/'))
 });
 
