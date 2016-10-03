@@ -1,0 +1,17 @@
+[
+    {
+        "id" : 0,
+        "nombre" : "pepe",
+        "profesion" : "panadero"
+    },
+    {
+        "id" : 1,
+        "nombre" : "pepa",
+        "profesion" : "pirata"
+    },
+    {
+        "id" : 2,
+        "nombre" : "nina",
+        "profesion" : "portera"
+    }
+]

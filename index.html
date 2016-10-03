@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="app">
+    <head>
+        <meta charset="utf-8">
+        <title>Ejemplo de Angular con Gulp</title>
+        <link rel="stylesheet" href="node_modules/angular-material/angular-material.css">
+
+        <script src="node_modules/angular/angular.js"></script>
+        <script src="node_modules/angular-aria/angular-aria.js"></script>
+        <script src="node_modules/angular-animate/angular-animate.js"></script>
+        <script src="node_modules/angular-material/angular-material.js"></script>
+        <script src="http://localhost:35729/livereload.js"></script>
+        <script src="dist/js/compilacion.js"></script>
+
+    </head>
+    <body>
+        <div ng-controller="pruebaCtrl">
+            <ul>
+                <li ng-repeat="user in users">
+                    <p>
+                        Id: {{user.id}}, Nombre: {{user.nombre}}
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </body>
+</html>
