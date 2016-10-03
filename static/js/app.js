@@ -28,7 +28,6 @@ app.controller('toolbarCtrl',['$scope','ServiceUsers','$timeout','$mdSidenav', f
         console.log("Failed: " + reason);
     });
 
-
     $scope.toggleLeft = buildDelayedToggler('left');
 
     /**
