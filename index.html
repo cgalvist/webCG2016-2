@@ -4,7 +4,6 @@
         <meta charset="utf-8">
         <title>Ejemplo de Angular con Gulp</title>
         <link rel="stylesheet" href="node_modules/angular-material/angular-material.css">
-
         <script src="node_modules/angular/angular.js"></script>
         <script src="node_modules/angular-aria/angular-aria.js"></script>
         <script src="node_modules/angular-animate/angular-animate.js"></script>
@@ -14,7 +13,20 @@
 
     </head>
     <body>
-        <div ng-controller="pruebaCtrl">
+        <div ng-controller="toolbarCtrl">
+            <div layout="column">
+                <div layout="column" layout-fill>
+                    <md-toolbar>
+                        <div class="md-toolbar-tools">
+                            <span>Menú</span>
+                            <span flex></span>
+                            <md-button>
+                                Botón derecho
+                            </md-button>
+                        </div>
+                    </md-toolbar>
+                </div>
+            </div>
             <ul>
                 <li ng-repeat="user in users">
                     <p>
@@ -22,6 +34,8 @@
                     </p>
                 </li>
             </ul>
+            <md-button>Texto</md-button>
         </div>
+
     </body>
 </html>

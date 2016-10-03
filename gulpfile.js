@@ -33,17 +33,22 @@ gulp.task('livereload', function() {
     tarea para minimizacion y concatenacion de javascript
 */
 gulp.task('compress', function() {
-    gulp.src('static/js/*.js')
+    gulp.src('static/js/**/*.js')
         .pipe(concat('compilacion.js'))
         .pipe(uglify())
         .pipe(gulp.dest('dist/js/'))
+});
+
+gulp.task('watchBuildFiles', function () {
+  gulp.watch('static/js/**/*.js', ['compress']);
+  gulp.watch('static/img/**/*.*.{png,jpg,jpeg,gif,svg}', ['images']);
 });
 
 /*
     tarea para optimizar imagenes
 */
 gulp.task('images', function() {
-  gulp.src('static/img/*.{png,jpg,jpeg,gif,svg}')
+  gulp.src('static/img/**/*.{png,jpg,jpeg,gif,svg}')
     .pipe(imagemin({
       progressive: true,
       svgoPlugins: [{removeViewBox: false}],
@@ -63,4 +68,4 @@ gulp.task('webserver', function() {
     });
 });
 
-gulp.task("default",["livereload","compress","images","webserver"]);
+gulp.task("default",["livereload","watchBuildFiles","webserver"]);

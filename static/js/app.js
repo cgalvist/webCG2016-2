@@ -1,6 +1,6 @@
 var app = angular.module("app",['ngMaterial']);
 
-app.controller("pruebaCtrl",['$scope','ServiceUsers',function($scope, ServiceUsers){
+app.controller('toolbarCtrl',['$scope','ServiceUsers',function($scope, ServiceUsers){
 
     $scope.prueba = "prueba CGT";
     //console.log($scope.prueba);
