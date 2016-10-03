@@ -30,19 +30,22 @@ angular.module('app')
     function buildDelayedToggler(navID) {
       return debounce(function() {
         // Component lookup should always be available since we are not using `ng-if`
+
+
         $mdSidenav(navID)
-          .toggle()
+          .toggle()/*
           .then(function () {
             console.log("toggle " + navID + " is done");
-          });
+        });*/
       }, 200);
     }
 
     $scope.close = function () {
         // Component lookup should always be available since we are not using `ng-if`
-        $mdSidenav('left').close().then(function () {
+        $mdSidenav('left').close()/*
+            .then(function () {
             console.log("close LEFT is done");
-        });
+        });*/
     };
 }])
 

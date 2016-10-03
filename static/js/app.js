@@ -12,11 +12,11 @@ angular.module("app",['ngMaterial','ui.router'])
             templateUrl: 'templates/menu.html',
             controller: 'toolbarCtrl'
         })
-        
+
         .state('webCG.inicio', {
             url: '/inicio',
             views: {
-                'menuContent': {
+                'contenidoMenu': {
                     templateUrl: 'templates/inicio.html',
                     controller: 'inicioCtrl',
                 }
@@ -26,7 +26,7 @@ angular.module("app",['ngMaterial','ui.router'])
         .state('webCG.acerca', {
             url: '/acerca',
             views: {
-                'menuContent': {
+                'contenidoMenu': {
                     templateUrl: 'templates/acerca.html',
                     controller: 'acercaCtrl',
                 }
