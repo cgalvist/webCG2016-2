@@ -14,7 +14,7 @@
 
     </head>
     <body>
-        <div ng-controller="toolbarCtrl">
+        <div ng-controller="toolbarCtrl" layout="column" style="height:100%;" ng-cloak>
             <section layout="row" flex>
                 <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="4">
                     <md-toolbar class="md-theme-indigo">
@@ -42,16 +42,20 @@
                             <md-icon md-svg-icon="dist/img/icons/more_vert.svg"></md-icon>
                         </md-button>
                     </div>
+                    <div>
+                        <md-content flex layout-padding>
+                            <div layout="column" layout-align="top center">
+                                <ul>
+                                    <li ng-repeat="user in users">
+                                    <p>Id: {{user.id}}, Nombre: {{user.nombre}}</p>
+                                    </li>
+                                </ul>
+                            <md-button>Texto</md-button>
+                            </div>
+                        </md-content>
+                    </div>
                 </md-toolbar>
             </section>
-            <ul>
-                <li ng-repeat="user in users">
-                    <p>
-                        Id: {{user.id}}, Nombre: {{user.nombre}}
-                    </p>
-                </li>
-            </ul>
-            <md-button>Texto</md-button>
         </div>
 
     </body>
