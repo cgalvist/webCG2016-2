@@ -1,0 +1,24 @@
+{
+  "name": "webcg",
+  "version": "1.0.0",
+  "description": "pagina de proyectos de computacion grafica",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cgalvist/webCG2016-2.git"
+  },
+  "author": "César Galvis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cgalvist/webCG2016-2/issues"
+  },
+  "homepage": "https://github.com/cgalvist/webCG2016-2#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-uglify": "^2.0.0"
+  }
+}
