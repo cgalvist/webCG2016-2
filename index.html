@@ -3,30 +3,47 @@
     <head>
         <meta charset="utf-8">
         <title>Ejemplo de Angular con Gulp</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
         <link rel="stylesheet" href="node_modules/angular-material/angular-material.css">
         <script src="node_modules/angular/angular.js"></script>
         <script src="node_modules/angular-aria/angular-aria.js"></script>
         <script src="node_modules/angular-animate/angular-animate.js"></script>
         <script src="node_modules/angular-material/angular-material.js"></script>
         <script src="http://localhost:35729/livereload.js"></script>
-        <script src="dist/js/compilacion.js"></script>
+        <script src="dist/js/app.min.js"></script>
 
     </head>
     <body>
         <div ng-controller="toolbarCtrl">
-            <div layout="column">
-                <div layout="column" layout-fill>
-                    <md-toolbar>
-                        <div class="md-toolbar-tools">
-                            <span>Menú</span>
-                            <span flex></span>
-                            <md-button>
-                                Botón derecho
-                            </md-button>
-                        </div>
+            <section layout="row" flex>
+                <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="4">
+                    <md-toolbar class="md-theme-indigo">
+                        <h1 class="md-toolbar-tools">Sidenav Left</h1>
                     </md-toolbar>
-                </div>
-            </div>
+                    <md-content layout-padding ng-controller="LeftCtrl">
+                        <md-button ng-click="close()" class="md-primary" hide-gt-md>
+                        Close Sidenav Left
+                        </md-button>
+                        <p hide show-gt-md>
+                        This sidenav is locked open on your device. To go back to the default behavior,
+                        narrow your display.
+                        </p>
+                    </md-content>
+                </md-sidenav>
+
+                <md-toolbar class="md-hue-2">
+                    <div class="md-toolbar-tools">
+                        <md-button class="md-icon-button" aria-label="Settings" ng-click="toggleLeft()">
+                            <md-icon md-svg-icon="dist/img/icons/menu.svg"></md-icon>
+                        </md-button>
+                        <h2><span>Bienvenido</span></h2>
+                        <span flex></span>
+                        <md-button class="md-icon-button" aria-label="More">
+                            <md-icon md-svg-icon="dist/img/icons/more_vert.svg"></md-icon>
+                        </md-button>
+                    </div>
+                </md-toolbar>
+            </section>
             <ul>
                 <li ng-repeat="user in users">
                     <p>

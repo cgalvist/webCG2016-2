@@ -1,5 +1,5 @@
 /*
- * Dependencias
+ * DEPENDENCIAS
  * para instalar por primera vez escriba:
  * npm install -save-dev NOMBRE_DEPENDENCIA
  */
@@ -12,15 +12,14 @@ var gulp = require('gulp'),
     connect = require('gulp-connect');
 
 /*
- * Configuración de las tareas
- */
+ *  CONFIGURACION DE LAS TAREAS
+*/
 
- /*
+/*
     tarea para recargar la página automaticamente
     cada vez que se haga un cambio en los archivos
-  */
+*/
 gulp.task('livereload', function() {
-
     //gulp.src(['./**/*.*'])
         //.pipe(watch(['./**/*.*']))
         //.pipe(connect.reload());
@@ -30,18 +29,21 @@ gulp.task('livereload', function() {
 });
 
 /*
+    tarea para minimizar automaticamente
+    cada vez que se haga un cambio en los archivos
+*/
+gulp.task('watchBuildFiles', function () {
+    gulp.watch('static/js/**/*.js', ['compress']);
+});
+
+/*
     tarea para minimizacion y concatenacion de javascript
 */
 gulp.task('compress', function() {
     gulp.src('static/js/**/*.js')
-        .pipe(concat('compilacion.js'))
-        .pipe(uglify())
+        .pipe(concat('app.min.js'))
+        .pipe(uglify({mangle: false}))
         .pipe(gulp.dest('dist/js/'))
-});
-
-gulp.task('watchBuildFiles', function () {
-  gulp.watch('static/js/**/*.js', ['compress']);
-  gulp.watch('static/img/**/*.*.{png,jpg,jpeg,gif,svg}', ['images']);
 });
 
 /*
@@ -68,4 +70,6 @@ gulp.task('webserver', function() {
     });
 });
 
-gulp.task("default",["livereload","watchBuildFiles","webserver"]);
+gulp.task("build",["compress",'images']);
+gulp.task("default",["livereload","watchBuildFiles",'images',"webserver"]);
+gulp.task("produccion",["build","webserver"]);
