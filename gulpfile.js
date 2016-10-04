@@ -86,4 +86,4 @@ gulp.task('heroku:production', ['build'], function(){
 
 gulp.task("build",["compress",'images']);
 gulp.task("default",["livereload","watchBuildFiles",'images',"webserver"]);
-gulp.task("produccion",["build","serverprod"]);
+gulp.task("production",["build","serverprod"]);
