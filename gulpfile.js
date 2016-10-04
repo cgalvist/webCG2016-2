@@ -80,6 +80,9 @@ gulp.task('serverprod', function() {
     livereload: false
   });
 });
+gulp.task('heroku:production', ['build'], function(){
+  console.log('heroku production');
+});
 
 gulp.task("build",["compress",'images']);
 gulp.task("default",["livereload","watchBuildFiles",'images',"webserver"]);
