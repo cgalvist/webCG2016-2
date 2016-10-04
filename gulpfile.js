@@ -64,6 +64,7 @@ gulp.task('images', function() {
 /*
     tarea para iniciar servidor
 */
+//desarrollo
 gulp.task('webserver', function() {
     connect.server({
         root: '.',
@@ -71,7 +72,15 @@ gulp.task('webserver', function() {
         port: 8080
     });
 });
+// produccion
+gulp.task('serverprod', function() {
+  connect.server({
+    root: '.',
+    port: process.env.PORT || 5000,
+    livereload: false
+  });
+});
 
 gulp.task("build",["compress",'images']);
 gulp.task("default",["livereload","watchBuildFiles",'images',"webserver"]);
-gulp.task("produccion",["build","webserver"]);
+gulp.task("produccion",["build","serverprod"]);

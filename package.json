@@ -16,14 +16,16 @@
     "url": "https://github.com/cgalvist/webCG2016-2/issues"
   },
   "homepage": "https://github.com/cgalvist/webCG2016-2#readme",
-  "devDependencies": {
+  "dependencies" : {
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",
     "gulp-connect": "^5.0.0",
     "gulp-imagemin": "^3.0.3",
-    "gulp-livereload": "^3.8.1",
     "gulp-uglify": "^2.0.0",
-    "gulp-watch": "^4.3.10",
     "imagemin-pngcrush": "^5.0.0"
+  },
+  "devDependencies": {
+    "gulp-watch": "^4.3.10",
+    "gulp-livereload": "^3.8.1"
   }
 }
