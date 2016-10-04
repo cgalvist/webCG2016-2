@@ -72,6 +72,7 @@ gulp.task('webserver', function() {
         port: 8080
     });
 });
+
 // produccion
 gulp.task('serverprod', function() {
   connect.server({
@@ -79,9 +80,6 @@ gulp.task('serverprod', function() {
     port: process.env.PORT || 5000,
     livereload: false
   });
-});
-gulp.task('heroku:production', ['build'], function(){
-  console.log('heroku production');
 });
 
 gulp.task("build",["compress",'images']);
