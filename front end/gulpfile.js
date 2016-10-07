@@ -77,7 +77,7 @@ gulp.task('webserver', function() {
 gulp.task('serverprod', function() {
   connect.server({
     root: '.',
-    port: process.env.PORT || 5000,
+    port: process.env.PORT || 1234,
     livereload: false
   });
 });
