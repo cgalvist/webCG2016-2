@@ -52,3 +52,7 @@ angular.module('app')
 .controller('inicioCtrl', function($scope) {})
 
 .controller('acercaCtrl', function($scope) {})
+
+.controller('maquinariaCtrl', function($scope) {})
+.controller('invernaderosCtrl', function($scope) {})
+.controller('formaletasCtrl', function($scope) {})
