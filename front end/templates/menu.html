@@ -42,13 +42,13 @@
                 <md-icon md-svg-icon="dist/img/icons/more_vert.svg"></md-icon>
             </md-button>
         </div>
-        <div style="height: 100%;">
-            <md-content flex layout-padding style="height: 100%;">
-                <div id="main">
-                    <!-- Aquí inyectamos las vistas -->
-                    <div ui-view="contenidoMenu"></div>
-                </div>
-            </md-content>
-        </div>
     </md-toolbar>
+    <md-content>
+        <md-content flex layout-padding>
+            <div id="main">
+                <!-- Aquí inyectamos las vistas -->
+                <div ui-view="contenidoMenu"></div>
+            </div>
+        </md-content>
+    </md-content>
 </div>
