@@ -91,6 +91,7 @@ angular.module('app')
     ];
 
     $scope.enviar = function(){
+        console.log("correo: " + $scope.email);
         console.log($scope.formaleta);
     }
 

@@ -24,8 +24,10 @@
                         {{dato.nombre}}
                     </md-switch>
                 </md-input-container>
-                <md-select ng-if="dato.lista" ng-disabled="!formaleta[dato.alias].activado" ng-model="formaleta[dato.alias].texto" placeholder="referencia" class="md-no-underline">
-                    <md-option ng-repeat="ref in listaMedidas" value="{{ref.nombre}}">{{ref.nombre}}</md-option>
+                <md-select ng-if="dato.lista" ng-disabled="!formaleta[dato.alias].activado" ng-model="formaleta[dato.alias].texto" placeholder="referencia" class="md-no-underline" ng-required="formaleta[dato.alias].activado">
+                    <md-option ng-repeat="ref in listaMedidas" value="{{ref.nombre}}">
+                        {{ref.nombre}}
+                    </md-option>
                 </md-select>
             </div>
 
