@@ -1,7 +1,7 @@
 <div>
     <h1>Formaletas</h1>
     <p>Ingrese las características que tendrá el producto:</p>
-    <md-content layout-padding>
+    <md-content layout-padding class="doc-content">
         <form name="formulario">
             <md-card>
                 <md-card-title>
@@ -40,11 +40,9 @@
                         layout-gt-sm="row"
                         layout-align="space-between center"
                         ng-repeat="dato in listaDatos">
-                        <md-input-container>
-                            <md-switch ng-model="formaleta[dato.alias].activado">
-                                {{dato.nombre}}
-                            </md-switch>
-                        </md-input-container>
+                        <md-switch ng-model="formaleta[dato.alias].activado">
+                        </md-switch>
+                        {{dato.nombre}}
                         <md-select
                             ng-if="dato.lista"
                             ng-disabled="!formaleta[dato.alias].activado"

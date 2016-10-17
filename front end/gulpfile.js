@@ -6,6 +6,7 @@
 var gulp = require('gulp'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
+    minifycss =require('gulp-minify-css'),
     imagemin = require('gulp-imagemin'),
     pngcrush = require('imagemin-pngcrush'),
     watch = require('gulp-watch'),
@@ -33,19 +34,31 @@ gulp.task('livereload', function() {
     cada vez que se haga un cambio en los archivos
 */
 gulp.task('watchBuildFiles', function () {
-    gulp.watch('static/js/**/*.js', ['compress']);
+    gulp.watch('static/js/**/*.js', ['minify-js']);
+    gulp.watch('static/css/**/*.css', ['minify-css']);
 });
 
 /*
     tarea para minimizacion y concatenacion de javascript
 */
-gulp.task('compress', function() {
+gulp.task('minify-js', function() {
     gulp.src('static/js/**/*.js')
         .pipe(concat('app.min.js'))
         .pipe(uglify({mangle: false}).on('error', function(e){
             console.log(e);
          }))
-        .pipe(gulp.dest('dist/js/'))
+        .pipe(gulp.dest('build/js/'))
+});
+
+/*
+    tarea para minimizacion y concatenacion de javascript
+*/
+// Tarea 2 llamada minify-css
+gulp.task('minify-css', function () {
+  gulp.src('static/css/**/*.css')
+  .pipe(concat('style.css'))
+  .pipe(minifycss())
+  .pipe(gulp.dest('build/css/'))
 });
 
 /*
@@ -58,7 +71,7 @@ gulp.task('images', function() {
       svgoPlugins: [{removeViewBox: false}],
       use: [pngcrush()]
     }))
-    .pipe(gulp.dest('dist/img/'));
+    .pipe(gulp.dest('build/img/'));
 });
 
 /*
@@ -82,6 +95,6 @@ gulp.task('serverprod', function() {
   });
 });
 
-gulp.task("build",["compress",'images']);
+gulp.task("build",["minify-js","minify-css",'images']);
 gulp.task("default",["livereload","watchBuildFiles",'images',"webserver"]);
 gulp.task("production",["build","serverprod"]);
