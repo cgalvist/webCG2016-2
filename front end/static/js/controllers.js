@@ -54,7 +54,14 @@ angular.module('app')
 .controller('acercaCtrl', function($scope) {})
 
 .controller('maquinariaCtrl', function($scope) {})
-.controller('invernaderosCtrl', function($scope) {})
+.controller('invernaderosCtrl', function($scope) {
+
+    $scope.enviar = function(){
+        console.log("correo: " + $scope.email);
+        console.log($scope.invernadero);
+    }
+
+})
 .controller('formaletasCtrl', function($scope) {
 
     $scope.listaMedidas = [
