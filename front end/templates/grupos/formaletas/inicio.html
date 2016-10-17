@@ -1,4 +1,43 @@
 <div>
     <h1>Formaletas</h1>
-    <p>en desarrollo</p>
+    <p>Ingrese las características que tendrá el producto:</p>
+    <md-content layout-padding>
+        <form name="formulario">
+            <div layout-gt-sm="row">
+                <md-input-container>
+                    <label>Altura (mm)</label>
+                    <input type="number" ng-model="formaleta.altura" required min="1">
+                </md-input-container>
+                <md-input-container>
+                    <label>Diámetro interno (mm)</label>
+                    <input type="number" ng-model="formaleta.diametroInterno" required min="1">
+                </md-input-container>
+                <md-input-container>
+                    <label>Altura ranura(mm)</label>
+                    <input type="number" ng-model="formaleta.alturaRanura" required min="1">
+                </md-input-container>
+            </div>
+
+            <div layout-gt-sm="row" layout-align="space-between center" ng-repeat="dato in listaDatos">
+                <md-input-container>
+                    <md-switch ng-model="formaleta[dato.alias].activado">
+                        {{dato.nombre}}
+                    </md-switch>
+                </md-input-container>
+                <md-select ng-if="dato.lista" ng-disabled="!formaleta[dato.alias].activado" ng-model="formaleta[dato.alias].texto" placeholder="referencia" class="md-no-underline">
+                    <md-option ng-repeat="ref in listaMedidas" value="{{ref.nombre}}">{{ref.nombre}}</md-option>
+                </md-select>
+            </div>
+
+            <md-input-container>
+                <label>Correo electrónico</label>
+                <input type="email" ng-model="email" required>
+            </md-input-container>
+            <!--<p>{{formulario.$error}}</p>-->
+            <div layout-gt-sm="row">
+                <md-button class="md-raised md-primary" ng-disabled="formulario.$invalid" ng-click="enviar()">Enviar</md-button>
+                <md-button class="md-raised" type="reset">Cancelar</md-button>
+            </div>
+        </form>
+    </md-content>
 </div>
