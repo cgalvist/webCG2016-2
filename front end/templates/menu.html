@@ -43,11 +43,11 @@
             </md-button>
         </div>
     </md-toolbar>
-    <md-content>
+    <md-content layout="column" flex md-scroll-y>
         <md-content flex layout-padding>
-            <div id="main">
+            <div id="main" class="docs-ng-view" ng-view layout-padding flex="noshrink">
                 <!-- Aquí inyectamos las vistas -->
-                <div ui-view="contenidoMenu"></div>
+                <div ui-view="contenidoMenu" class="doc-content" ng-view></div>
             </div>
         </md-content>
     </md-content>
