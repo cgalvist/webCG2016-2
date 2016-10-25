@@ -61,40 +61,21 @@ angular.module('app')
     }
 
 })
-.controller('formaletasCtrl', function($scope) {
+.controller('formaletasCtrl', function($scope, ListaDatos, ListaMedidas) {
 
-    $scope.listaMedidas = [
-        {nombre: 'W14X145', ancho:394, alto:375},
-        {nombre: 'W16X100', ancho:265, alto:431},
-        {nombre: 'W16X26', ancho:140, alto:399},
-        {nombre: 'W16X36', ancho:177, alto:406},
-        {nombre: 'W18X258', ancho:299, alto:545},
-        {nombre: 'W24X84', ancho:229, alto:612},
-        {nombre: 'W24X131', ancho:327, alto:622},
-        {nombre: 'W27X84', ancho:253, alto:678},
-        {nombre: 'W30X326', ancho:390, alto:823},
-        {nombre: 'W30X391', ancho:396, alto:843},
-        {nombre: 'W40X235', ancho:301, alto:1008},
-    ];
+    $scope.listaMedidas = [];
+    $scope.listaDatos = [];
 
-    $scope.listaDatos = [
-        {nombre:"COVER PLATE A 0°",                     alias:"CP_0",       lista: true},
-        {nombre:"COVER PLATE A 90°",                    alias:"CP_90",      lista: true},
-        {nombre:"COVER PLATE A 180°",                   alias:"CP_180",     lista: true},
-        {nombre:"COVER PLATE A 270°",                   alias:"CP_270",     lista: true},
-        {nombre:"AUTO FILLER PLATE A 0°",               alias:"AFP_0",      lista: true},
-        {nombre:"AUTO FILLER PLATE A 45°",              alias:"AFP_45",     lista: true},
-        {nombre:"AUTO FILLER PLATE A 90°",              alias:"AFP_90",     lista: true},
-        {nombre:"AUTO FILLER PLATE A 135°",             alias:"AFP_135",    lista: true},
-        {nombre:"AUTO FILLER PLATE A 180°",             alias:"AFP_180",    lista: true},
-        {nombre:"AUTO FILLER PLATE A 225°",             alias:"AFP_225",    lista: true},
-        {nombre:"AUTO FILLER PLATE A 270°",             alias:"AFP_270",    lista: true},
-        {nombre:"AUTO FILLER PLATE A 315°",             alias:"AFP_315",    lista: true},
-        {nombre:"RANURAS VARILLAS ENTRE 0° Y 90°",      alias:"RV_0_90",    lista: false},
-        {nombre:"RANURAS VARILLAS ENTRE 90° Y 180°",    alias:"RV_90_180",  lista: false},
-        {nombre:"RANURAS VARILLAS ENTRE 180° Y 270°",   alias:"RV_180_270", lista: false},
-        {nombre:"RANURAS VARILLAS ENTRE 270° Y 0°",     alias:"RV_270_0",   lista: false},
-    ];
+    ListaMedidas.getAll().then(function(data) {
+      $scope.listaMedidas = data;
+    })
+
+    ListaDatos.getAll().then(function(data) {
+      $scope.listaDatos = data;
+    })
+    .catch(function(err) {
+      console.log(err);
+  });
 
     $scope.enviar = function(){
         console.log(JSON.stringify($scope.formaleta));

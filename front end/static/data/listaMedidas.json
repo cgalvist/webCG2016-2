@@ -1,0 +1,45 @@
+[{
+    "nombre": "W14X145",
+    "ancho": 394,
+    "alto": 375
+}, {
+    "nombre": "W16X100",
+    "ancho": 265,
+    "alto": 431
+}, {
+    "nombre": "W16X26",
+    "ancho": 140,
+    "alto": 399
+}, {
+    "nombre": "W16X36",
+    "ancho": 177,
+    "alto": 406
+}, {
+    "nombre": "W18X258",
+    "ancho": 299,
+    "alto": 545
+}, {
+    "nombre": "W24X84",
+    "ancho": 229,
+    "alto": 612
+}, {
+    "nombre": "W24X131",
+    "ancho": 327,
+    "alto": 622
+}, {
+    "nombre": "W27X84",
+    "ancho": 253,
+    "alto": 678
+}, {
+    "nombre": "W30X326",
+    "ancho": 390,
+    "alto": 823
+}, {
+    "nombre": "W30X391",
+    "ancho": 396,
+    "alto": 843
+}, {
+    "nombre": "W40X235",
+    "ancho": 301,
+    "alto": 1008
+}]
