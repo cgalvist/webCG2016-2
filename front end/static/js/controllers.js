@@ -57,8 +57,7 @@ angular.module('app')
 .controller('invernaderosCtrl', function($scope) {
 
     $scope.enviar = function(){
-        console.log("correo: " + $scope.email);
-        console.log($scope.invernadero);
+        console.log(JSON.stringify($scope.invernadero));
     }
 
 })
@@ -98,8 +97,7 @@ angular.module('app')
     ];
 
     $scope.enviar = function(){
-        console.log("correo: " + $scope.email);
-        console.log($scope.formaleta);
+        console.log(JSON.stringify($scope.formaleta));
     }
 
 })

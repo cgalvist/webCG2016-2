@@ -40,7 +40,7 @@
                         layout-gt-sm="row"
                         layout-align="space-between center"
                         ng-repeat="dato in listaDatos">
-                        <md-switch ng-model="formaleta[dato.alias].activado">
+                        <md-switch ng-model="formaleta[dato.alias].activado" aria-label="switch de personalizacion de formaleta">
                         </md-switch>
                         {{dato.nombre}}
                         <md-select
@@ -63,14 +63,26 @@
             <md-card>
                 <md-card-title>
                     <md-card-title-text>
-                        <span class="md-headline">Enviar</span>
-                        <span class="md-subhead">Enviar los datos ingresados a un correo electrónico</span>
+                        <span class="md-headline">Datos de envío</span>
+                        <span class="md-subhead">Escriba algunos datos personales</span>
                     </md-card-title-text>
                 </md-card-title>
                 <md-card-content>
                     <md-input-container>
+                        <label>Nombre</label>
+                        <input type="text" ng-model="formaleta.datosUsuario.nombre" required>
+                    </md-input-container>
+                </md-card-content>
+                <md-card-content>
+                    <md-input-container>
+                        <label>Apellidos</label>
+                        <input type="text" ng-model="formaleta.datosUsuario.apellidos" required>
+                    </md-input-container>
+                </md-card-content>
+                <md-card-content>
+                    <md-input-container>
                         <label>Correo electrónico</label>
-                        <input type="email" ng-model="email" required>
+                        <input type="email" ng-model="formaleta.datosUsuario.email" required>
                     </md-input-container>
                 </md-card-content>
             </md-card>
@@ -82,7 +94,6 @@
                     ng-click="enviar()">
                     Enviar
                 </md-button>
-                <md-button class="md-raised" type="reset">Cancelar</md-button>
             </div>
         </form>
     </md-content>

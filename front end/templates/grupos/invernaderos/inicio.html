@@ -54,21 +54,32 @@
             <md-card>
                 <md-card-title>
                     <md-card-title-text>
-                        <span class="md-headline">Enviar</span>
-                        <span class="md-subhead">Enviar los datos ingresados a un correo electrónico</span>
+                        <span class="md-headline">Datos de envío</span>
+                        <span class="md-subhead">Escriba algunos datos personales</span>
                     </md-card-title-text>
                 </md-card-title>
                 <md-card-content>
                     <md-input-container>
+                        <label>Nombre</label>
+                        <input type="text" ng-model="invernadero.datosUsuario.nombre" required>
+                    </md-input-container>
+                </md-card-content>
+                <md-card-content>
+                    <md-input-container>
+                        <label>Apellidos</label>
+                        <input type="text" ng-model="invernadero.datosUsuario.apellidos" required>
+                    </md-input-container>
+                </md-card-content>
+                <md-card-content>
+                    <md-input-container>
                         <label>Correo electrónico</label>
-                        <input type="email" ng-model="email" required>
+                        <input type="email" ng-model="invernadero.datosUsuario.email" required>
                     </md-input-container>
                 </md-card-content>
             </md-card>
             <!--<p>{{formulario.$error}}</p>-->
             <div layout-gt-sm="row">
                 <md-button class="md-raised md-primary" ng-disabled="formulario.$invalid" ng-click="enviar()">Enviar</md-button>
-                <md-button class="md-raised" type="reset">Cancelar</md-button>
             </div>
         </form>
     </md-content>
