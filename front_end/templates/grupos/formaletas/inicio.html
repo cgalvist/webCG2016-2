@@ -13,16 +13,22 @@
                 <md-card-content>
                     <div layout-gt-sm="row">
                         <md-input-container>
-                            <label>Altura (mm)</label>
-                            <input type="number" ng-model="formaleta.altura" required min="1">
+                            <label>Unidades</label>
+                            <input type="text" ng-model="formaleta.medidas.unidades" required>
+                        </md-input-container>
+                    </div>
+                    <div layout-gt-sm="row">
+                        <md-input-container>
+                            <label>Altura ({{formaleta.medidas.unidades}})</label>
+                            <input type="number" ng-model="formaleta.medidas.altura" required min="1">
                         </md-input-container>
                         <md-input-container>
-                            <label>Diámetro interno (mm)</label>
-                            <input type="number" ng-model="formaleta.diametroInterno" required min="1">
+                            <label>Diámetro interno ({{formaleta.medidas.unidades}})</label>
+                            <input type="number" ng-model="formaleta.medidas.diametroInterno" required min="1">
                         </md-input-container>
                         <md-input-container>
-                            <label>Altura ranura(mm)</label>
-                            <input type="number" ng-model="formaleta.alturaRanura" required min="1">
+                            <label>Altura ranura({{formaleta.medidas.unidades}})</label>
+                            <input type="number" ng-model="formaleta.medidas.alturaRanura" required min="1">
                         </md-input-container>
                     </div>
                 </md-card-content>
@@ -40,16 +46,16 @@
                         layout-gt-sm="row"
                         layout-align="space-between center"
                         ng-repeat="dato in listaDatos">
-                        <md-switch ng-model="formaleta[dato.alias].activado" aria-label="switch de personalizacion de formaleta">
+                        <md-switch ng-model="formaleta.opciones[dato.alias].activado" aria-label="switch de personalizacion de formaleta">
                         </md-switch>
                         {{dato.nombre}}
                         <md-select
                             ng-if="dato.lista"
-                            ng-disabled="!formaleta[dato.alias].activado"
-                            ng-model="formaleta[dato.alias].texto"
+                            ng-disabled="!formaleta.opciones[dato.alias].activado"
+                            ng-model="formaleta.opciones[dato.alias].texto"
                             placeholder="referencia"
                             class="md-no-underline"
-                            ng-required="formaleta[dato.alias].activado">
+                            ng-required="formaleta.opciones[dato.alias].activado">
                             <md-option
                                 ng-repeat="ref in listaMedidas"
                                 value="{{ref.nombre}}">

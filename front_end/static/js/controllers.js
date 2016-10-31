@@ -56,12 +56,15 @@ angular.module('app')
 .controller('maquinariaCtrl', function($scope) {})
 .controller('invernaderosCtrl', function($scope) {
 
+    $scope.invernadero = {formulario: "invernadero",medidas: {unidades: 'metros'}};
     $scope.enviar = function(){
         console.log(JSON.stringify($scope.invernadero));
     }
 
 })
 .controller('formaletasCtrl', function($scope, ListaDatos, ListaMedidas) {
+
+    $scope.formaleta = {formulario: "formaleta",medidas: {unidades: 'mm'}};
 
     $scope.listaMedidas = [];
     $scope.listaDatos = [];
