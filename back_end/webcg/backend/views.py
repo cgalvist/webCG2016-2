@@ -14,8 +14,8 @@ def api_view_send_json_to_office(request):
 		    'cotizacion producto',
 		    message,
 		    'interno',
-		    ['pjrodriguezg@unal.edu.co'],
-		    #['Computaciongrafica2016@hotmail.com'],
+		    #['pjrodriguezg@unal.edu.co'],
+		    ['computaciongrafica20163@gmail.com'],
 		    fail_silently=False,
 		)
 		return HttpResponse(
