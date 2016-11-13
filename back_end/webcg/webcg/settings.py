@@ -119,3 +119,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
+#email settings
+
+EMAIL_HOST = "smtp.mailgun.org"
+EMAIL_HOST_USER = "postmaster@glitch.com.co"
+EMAIL_HOST_PASSWORD = "4a1c84aea504ecf4d3e1c1ca04c92803"
+DEFAULT_FROM_EMAIL = "postmaster@glitch.com.co"
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_SUBJECT_PREFIX = '[]'
