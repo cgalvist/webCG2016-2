@@ -75,12 +75,12 @@ angular.module('app')
     function enviar(mensaje) {
         var deferred = $q.defer();
 
-        $http({
-            method: 'POST',
-            url: backEndURL + 'send-json-to-office',
-            data: {
-                message: mensaje,
-            },
+        var fd = new FormData();
+	    fd.append('message', mensaje);
+
+        $http.post(backEndURL + 'send-json-to-office', fd,{
+            transformRequest: angular.identity,
+            headers: {}
         }).success(function(data) {
             deferred.resolve(data);
         }).error(function(error) {
