@@ -104,8 +104,6 @@ angular.module('app')
         );
     };
 
-    $scope.mensajeSimple("Hola :)");
-
     $scope.enviar = function() {
         //console.log(JSON.stringify($scope.invernadero));
         var datosFormulario = JSON.stringify($scope.invernadero);
