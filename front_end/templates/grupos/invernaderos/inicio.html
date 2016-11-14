@@ -14,27 +14,21 @@
                     <div layout-gt-sm="row">
                         <md-input-container>
                             <label>Unidades</label>
-                            <input type="text" ng-model="invernadero.medidas.unidades" required>
+                            <input type="text" ng-model="invernadero.medidas.unidades" required disabled>
                         </md-input-container>
                     </div>
                     <div layout-gt-sm="row">
                         <md-select
                             ng-model="invernadero.medidas.tipo"
-                            placeholder="tipo de tamaño del domo"
+                            placeholder="tipo de domo"
                             class="md-no-underline"
                             required>
-                            <md-option value="radio">radio</md-option>
-                            <md-option value="anchoYLargo">ancho y largo</md-option>
-                            <md-option value="areaYLado">area y lado</md-option>
+                            <md-option value="piramide">Pirámide</md-option>
+                            <md-option value="rectangularTriangular">Rectangular Triangular</md-option>
+                            <md-option value="rectangularCircular">Rectangular Circular</md-option>
                         </md-select>
                     </div>
-                    <div layout-gt-sm="row" ng-if="invernadero.medidas.tipo == 'radio'">
-                        <md-input-container>
-                            <label>Radio ({{invernadero.medidas.unidades}})</label>
-                            <input type="number" ng-model="invernadero.medidas.radio" required min="1">
-                        </md-input-container>
-                    </div>
-                    <div layout-gt-sm="row" ng-if="invernadero.medidas.tipo == 'anchoYLargo'">
+                    <div layout-gt-sm="row">
                         <md-input-container>
                             <label>Ancho ({{invernadero.medidas.unidades}})</label>
                             <input type="number" ng-model="invernadero.medidas.ancho" required min="1">
@@ -43,15 +37,9 @@
                             <label>Largo ({{invernadero.medidas.unidades}})</label>
                             <input type="number" ng-model="invernadero.medidas.largo" required min="1">
                         </md-input-container>
-                    </div>
-                    <div layout-gt-sm="row" ng-if="invernadero.medidas.tipo == 'areaYLado'">
                         <md-input-container>
-                            <label>Area ({{invernadero.medidas.unidades}}²)</label>
-                            <input type="number" ng-model="invernadero.medidas.area" required min="1">
-                        </md-input-container>
-                        <md-input-container>
-                            <label>Lado ({{invernadero.medidas.unidades}})</label>
-                            <input type="number" ng-model="invernadero.medidas.lado" required min="1">
+                            <label>Alto ({{invernadero.medidas.unidades}})</label>
+                            <input type="number" ng-model="invernadero.medidas.alto" required min="1">
                         </md-input-container>
                     </div>
                 </md-card-content>
