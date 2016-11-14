@@ -38,9 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -129,3 +132,5 @@ DEFAULT_FROM_EMAIL = "postmaster@compgrafica20162.tk"
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_SUBJECT_PREFIX = '[]'
+
+CORS_ORIGIN_ALLOW_ALL = True
