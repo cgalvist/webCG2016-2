@@ -15,9 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from backend.views import api_view_hello
+from backend.views import api_view_send_json_to_office
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^hello/?$', api_view_hello),
+    url(r'^send-json-to-office/?$', api_view_send_json_to_office),
 ]
