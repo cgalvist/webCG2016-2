@@ -77,12 +77,21 @@ gulp.task('images', function() {
 /*
     tarea para iniciar servidor
 */
+var cors = function (req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Headers', '*');
+    next();
+};
+
 //desarrollo
 gulp.task('webserver', function() {
     connect.server({
         root: '.',
+        port: 8080,
         livereload: true,
-        port: 8080
+        middleware: function () {
+            return [cors];
+        },
     });
 });
 
@@ -91,7 +100,10 @@ gulp.task('serverprod', function() {
   connect.server({
     root: '.',
     port: process.env.PORT || 1234,
-    livereload: false
+    livereload: false,
+    middleware: function () {
+        return [cors];
+    },
   });
 });
 

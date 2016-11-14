@@ -1,7 +1,7 @@
 angular.module('app')
 
 // controlador del menu responsive izquierdo
-.controller('toolbarCtrl',['$scope','$timeout','$mdSidenav', function($scope, $timeout, $mdSidenav){
+.controller('toolbarCtrl', ['$scope', '$timeout', '$mdSidenav', function($scope, $timeout, $mdSidenav) {
 
     $scope.toggleLeft = buildDelayedToggler('left');
 
@@ -28,24 +28,26 @@ angular.module('app')
      * report completion in console
      */
     function buildDelayedToggler(navID) {
-      return debounce(function() {
-        // Component lookup should always be available since we are not using `ng-if`
+        return debounce(function() {
+            // Component lookup should always be available since we are not using `ng-if`
 
 
-        $mdSidenav(navID)
-          .toggle()/*
-          .then(function () {
-            console.log("toggle " + navID + " is done");
-        });*/
-      }, 200);
+            $mdSidenav(navID)
+                .toggle()
+                /*
+              .then(function () {
+                console.log("toggle " + navID + " is done");
+            });*/
+        }, 200);
     }
 
-    $scope.close = function () {
+    $scope.close = function() {
         // Component lookup should always be available since we are not using `ng-if`
-        $mdSidenav('left').close()/*
-            .then(function () {
-            console.log("close LEFT is done");
-        });*/
+        $mdSidenav('left').close()
+            /*
+                .then(function () {
+                console.log("close LEFT is done");
+            });*/
     };
 }])
 
@@ -54,33 +56,96 @@ angular.module('app')
 .controller('acercaCtrl', function($scope) {})
 
 .controller('maquinariaCtrl', function($scope) {})
-.controller('invernaderosCtrl', function($scope) {
 
-    $scope.invernadero = {formulario: "invernadero",medidas: {unidades: 'metros'}};
-    $scope.enviar = function(){
-        console.log(JSON.stringify($scope.invernadero));
+.controller('invernaderosCtrl', function($scope, $mdToast, EnviarCorreo) {
+
+    $scope.invernadero = {
+        formulario: "invernadero",
+        medidas: {
+            unidades: 'metros'
+        }
+    };
+
+    var last = {
+        bottom: true,
+        top: false,
+        left: false,
+        right: true
+    };
+
+    $scope.toastPosition = angular.extend({},last);
+
+    function sanitizePosition() {
+        var current = $scope.toastPosition;
+
+        if ( current.bottom && last.top ) current.top = false;
+        if ( current.top && last.bottom ) current.bottom = false;
+        if ( current.right && last.left ) current.left = false;
+        if ( current.left && last.right ) current.right = false;
+
+        last = angular.extend({},current);
+    }
+
+    $scope.getToastPosition = function() {
+        sanitizePosition();
+
+        return Object.keys($scope.toastPosition)
+            .filter(function(pos) { return $scope.toastPosition[pos]; })
+            .join(' ');
+    };
+
+    $scope.mensajeSimple = function(mensaje) {
+        var pinTo = $scope.getToastPosition();
+        $mdToast.show(
+            $mdToast.simple()
+            .textContent(mensaje)
+            .position(pinTo)
+            .hideDelay(3000)
+        );
+    };
+
+    $scope.mensajeSimple("Hola :)");
+
+    $scope.enviar = function() {
+        //console.log(JSON.stringify($scope.invernadero));
+        var datosFormulario = JSON.stringify($scope.invernadero);
+        EnviarCorreo.enviar(datosFormulario).then(function(data) {
+                $scope.mensajeSimple("Formulario enviado exitosamente");
+            })
+            .catch(function(err) {
+                console.log(err);
+            });
     }
 
 })
+
 .controller('formaletasCtrl', function($scope, ListaDatos, ListaMedidas) {
 
-    $scope.formaleta = {formulario: "formaleta",medidas: {unidades: 'mm'}};
+    $scope.formaleta = {
+        formulario: "formaleta",
+        medidas: {
+            unidades: 'mm'
+        }
+    };
 
     $scope.listaMedidas = [];
     $scope.listaDatos = [];
 
     ListaMedidas.getAll().then(function(data) {
-      $scope.listaMedidas = data;
-    })
+            $scope.listaMedidas = data;
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
 
     ListaDatos.getAll().then(function(data) {
-      $scope.listaDatos = data;
-    })
-    .catch(function(err) {
-      console.log(err);
-  });
+            $scope.listaDatos = data;
+        })
+        .catch(function(err) {
+            console.log(err);
+        });
 
-    $scope.enviar = function(){
+    $scope.enviar = function() {
         console.log(JSON.stringify($scope.formaleta));
     }
 
