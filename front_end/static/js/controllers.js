@@ -1,3 +1,10 @@
+var last = {
+    bottom: true,
+    top: false,
+    left: false,
+    right: true
+};
+
 angular.module('app')
 
 // controlador del menu responsive izquierdo
@@ -66,13 +73,6 @@ angular.module('app')
         }
     };
 
-    var last = {
-        bottom: true,
-        top: false,
-        left: false,
-        right: true
-    };
-
     $scope.toastPosition = angular.extend({},last);
 
     function sanitizePosition() {
@@ -117,7 +117,7 @@ angular.module('app')
 
 })
 
-.controller('formaletasCtrl', function($scope, ListaDatos, ListaMedidas) {
+.controller('formaletasCtrl', function($scope, $mdToast, EnviarCorreo, ListaDatos, ListaMedidas) {
 
     $scope.formaleta = {
         formulario: "formaleta",
@@ -143,8 +143,46 @@ angular.module('app')
             console.log(err);
         });
 
+    $scope.toastPosition = angular.extend({},last);
+
+    function sanitizePosition() {
+        var current = $scope.toastPosition;
+
+        if ( current.bottom && last.top ) current.top = false;
+        if ( current.top && last.bottom ) current.bottom = false;
+        if ( current.right && last.left ) current.left = false;
+        if ( current.left && last.right ) current.right = false;
+
+        last = angular.extend({},current);
+    }
+
+    $scope.getToastPosition = function() {
+        sanitizePosition();
+
+        return Object.keys($scope.toastPosition)
+            .filter(function(pos) { return $scope.toastPosition[pos]; })
+            .join(' ');
+    };
+
+    $scope.mensajeSimple = function(mensaje) {
+        var pinTo = $scope.getToastPosition();
+        $mdToast.show(
+            $mdToast.simple()
+            .textContent(mensaje)
+            .position(pinTo)
+            .hideDelay(3000)
+        );
+    };
+
     $scope.enviar = function() {
-        console.log(JSON.stringify($scope.formaleta));
+        // console.log(JSON.stringify($scope.formaleta));
+        var datosFormulario = JSON.stringify($scope.formaleta);
+        EnviarCorreo.enviar(datosFormulario).then(function(data) {
+                $scope.mensajeSimple("Formulario enviado exitosamente");
+            })
+            .catch(function(err) {
+                console.log(err);
+            });
     }
 
 })
