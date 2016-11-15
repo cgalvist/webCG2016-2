@@ -1,11 +1,11 @@
 var ipServer = '/static/data',
     backEndURL;
 
-if (location.hostname == "localhost") {
-    backEndURL = 'http://localhost:8000/';
-} else {
+// if (location.hostname == "localhost") {
+//     backEndURL = 'http://localhost:8000/';
+// } else {
     backEndURL = 'http://backend.compgrafica20162.tk/';
-}
+// }
 
 angular.module('app')
 
@@ -75,12 +75,13 @@ angular.module('app')
     function enviar(mensaje) {
         var deferred = $q.defer();
 
-        var fd = new FormData();
-	    fd.append('message', mensaje);
-
-        $http.post(backEndURL + 'send-json-to-office', fd,{
-            transformRequest: angular.identity,
-            headers: {}
+        $http({
+            method: 'POST',
+            url: backEndURL + 'send-json-to-office',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            data: "message=" + mensaje,
         }).success(function(data) {
             deferred.resolve(data);
         }).error(function(error) {
