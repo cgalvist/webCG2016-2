@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import json
 from django.shortcuts import render
 from rest_framework.decorators import api_view
@@ -9,7 +11,9 @@ from django.core.mail import send_mail
 def api_view_send_json_to_office(request):
 	message = request.POST.get("message")
 	if (message):
-		# print(request.POST.get("message"))
+		#print(request.POST.get("message"))
+		json_data = json.loads(request.POST.get("message"))
+		print(json_data["datosUsuario"]["email"])
 		send_mail(
 		    'cotizacion producto',
 		    message,
@@ -18,6 +22,16 @@ def api_view_send_json_to_office(request):
 		    ['computaciongrafica20163@gmail.com'],
 		    fail_silently=False,
 		)
+
+		confirmation_message = 'Saludos '+json_data["datosUsuario"]["nombre"]+" "+json_data["datosUsuario"]["apellidos"]+u", \nEstamos procesando su solicitud, en los próximos minutos recibirá los detalles de su cotización. \nGracias."
+		send_mail(
+		    'Estamos procesando su solicitud',
+		    confirmation_message,
+		    'Computación Gráfica',
+		    json_data["datosUsuario"]["email"],
+		    fail_silently=False,
+		)
+		print(confirmation_message)
 		return HttpResponse(
 				json.dumps({"message": "Message sent: " + message}),
 				content_type = "application/json"
