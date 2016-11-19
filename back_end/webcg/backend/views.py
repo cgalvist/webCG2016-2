@@ -12,8 +12,11 @@ def api_view_send_json_to_office(request):
 	message = request.POST.get("message")
 	if (message):
 		#print(request.POST.get("message"))
-		json_data = json.loads(request.POST.get("message"))
+		print(0)
+		json_data = json.loads(unicode(request.POST.get("message")))
+		print(1)
 		print(json_data["datosUsuario"]["email"])
+		print(2)
 		send_mail(
 		    'cotizacion producto',
 		    message,
@@ -23,15 +26,19 @@ def api_view_send_json_to_office(request):
 		    fail_silently=False,
 		)
 
-		confirmation_message = 'Saludos '+json_data["datosUsuario"]["nombre"]+" "+json_data["datosUsuario"]["apellidos"]+u", \nEstamos procesando su solicitud, en los próximos minutos recibirá los detalles de su cotización. \nGracias."
+		print(3)
+		confirmation_message = u' '.join(('Saludos ',json_data["datosUsuario"]["nombre"],json_data["datosUsuario"]["apellidos"], u", \nEstamos procesando su solicitud, en los proximo minutos va a recibir los detalles de su producto. \nGracias."))
+		print(6)
 		send_mail(
-		    'Estamos procesando su solicitud',
+		    u'Estamos procesando su solicitud',
 		    confirmation_message,
-		    'Computación Gráfica',
-		    json_data["datosUsuario"]["email"],
+		    u'confirmation',
+		    [json_data["datosUsuario"]["email"]],
 		    fail_silently=False,
 		)
+		print(4)
 		print(confirmation_message)
+		print(5)
 		return HttpResponse(
 				json.dumps({"message": "Message sent: " + message}),
 				content_type = "application/json"
