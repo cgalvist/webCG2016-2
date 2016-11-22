@@ -42,15 +42,15 @@
                     <div layout-gt-sm="row">
                         <md-input-container>
                             <label>Ancho ({{invernadero.medidas.unidades}})</label>
-                            <input type="number" ng-model="invernadero.medidas.ancho" required min="1">
+                            <input type="number" ng-model="invernadero.medidas.ancho" required min="1" max="6">
                         </md-input-container>
                         <md-input-container>
                             <label>Largo ({{invernadero.medidas.unidades}})</label>
-                            <input type="number" ng-model="invernadero.medidas.largo" required min="1">
+                            <input type="number" ng-model="invernadero.medidas.largo" required min="1" max="7">
                         </md-input-container>
                         <md-input-container>
                             <label>Alto ({{invernadero.medidas.unidades}})</label>
-                            <input type="number" ng-model="invernadero.medidas.alto" required min="1">
+                            <input type="number" ng-model="invernadero.medidas.alto" required min="1" max="3">
                         </md-input-container>
                     </div>
                 </md-card-content>
