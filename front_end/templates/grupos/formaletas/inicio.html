@@ -31,15 +31,15 @@
                     <div layout-gt-sm="row">
                         <md-input-container>
                             <label>Altura ({{formaleta.medidas.unidades}})</label>
-                            <input type="number" ng-model="formaleta.medidas.altura" required min="1">
+                            <input type="number" ng-model="formaleta.medidas.altura" required min="1000" max="5000">
                         </md-input-container>
                         <md-input-container>
                             <label>Diámetro interno ({{formaleta.medidas.unidades}})</label>
-                            <input type="number" ng-model="formaleta.medidas.diametroInterno" required min="1">
+                            <input type="number" ng-model="formaleta.medidas.diametroInterno" required min="600" max="3000">
                         </md-input-container>
                         <md-input-container>
                             <label>Altura ranura({{formaleta.medidas.unidades}})</label>
-                            <input type="number" ng-model="formaleta.medidas.alturaRanura" required min="1">
+                            <input type="number" ng-model="formaleta.medidas.alturaRanura" required min="100" max="300">
                         </md-input-container>
                     </div>
                 </md-card-content>
